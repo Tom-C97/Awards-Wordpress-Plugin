@@ -1,0 +1,56 @@
+.awards-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .award-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .award-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .award {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 150px;
+      justify-content: center;
+    }
+
+    .award-year {
+      font-weight: bold;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    /* Swiper custom styles */
+    .swiper {
+      padding: 20px 40px !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #333 !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #333 !important;
+    }
