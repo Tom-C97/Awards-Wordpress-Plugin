@@ -3,7 +3,7 @@
      * Plugin Name: Awards Plugin
      * Plugin URI: https://github.com/Tom-C97
      * Description: A plugin to display awards in a carousel.
-     * Version: 1.2
+     * Version: 1.3
      * Author: Tom Cave
      * Author URI: https://github.com/Tom-C97
      */
@@ -72,6 +72,26 @@
       register_post_type('award', $args);
     }
     add_action('init', 'awards_plugin_register_post_type', 0);
+
+    // Add capabilities to roles
+    function awards_plugin_add_capabilities() {
+      $roles = array('administrator', 'editor', 'author', 'contributor');
+      foreach ($roles as $role) {
+        $role_obj = get_role($role);
+        if ($role_obj) {
+          $role_obj->add_cap('publish_awards');
+          $role_obj->add_cap('edit_awards');
+          $role_obj->add_cap('edit_others_awards');
+          $role_obj->add_cap('delete_awards');
+          $role_obj->add_cap('delete_others_awards');
+          $role_obj->add_cap('read_private_awards');
+          $role_obj->add_cap('edit_award');
+          $role_obj->add_cap('delete_award');
+          $role_obj->add_cap('read_award');
+        }
+      }
+    }
+    add_action('admin_init', 'awards_plugin_add_capabilities');
 
     // Enqueue styles and scripts
     function awards_plugin_enqueue_scripts() {
